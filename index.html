@@ -19,6 +19,36 @@
   box-sizing:border-box;
 }
 
+  <script>
+async function loadHomeContent() {
+  try {
+    const res = await fetch('/content/home.json?cache=' + Date.now());
+    const data = await res.json();
+
+    document.querySelector('.eyebrow').textContent = data.heroEyebrow;
+    document.querySelector('.hero h1').textContent = data.heroTitle;
+    document.querySelector('.hero p').textContent = data.heroText;
+
+    document.querySelector('.hero').style.background =
+      `linear-gradient(to right, rgba(0,0,0,.78), rgba(0,0,0,.28)), url("${data.heroImage}") center/cover`;
+
+    const buttons = document.querySelectorAll('.hero .btn');
+    buttons[0].textContent = data.primaryButtonText;
+    buttons[0].href = data.primaryButtonUrl;
+    buttons[1].textContent = data.secondaryButtonText;
+    buttons[1].href = data.secondaryButtonUrl;
+
+    document.querySelector('.intro .kicker').textContent = data.introKicker;
+    document.querySelector('.intro h2').textContent = data.introTitle;
+    document.querySelector('.intro .lead').textContent = data.introText;
+  } catch (err) {
+    console.warn('Home content file could not be loaded.', err);
+  }
+}
+
+loadHomeContent();
+</script>
+  
 body{
   margin:0;
   font-family:Arial, Helvetica, sans-serif;
