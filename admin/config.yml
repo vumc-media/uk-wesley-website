@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME
+  repo: vumc-media/uk-wesley-website
   branch: main
+  auth_endpoint: /api/auth
 
 media_folder: "media/uploads"
 public_folder: "/media/uploads"
@@ -14,10 +15,16 @@ collections:
         name: "home"
         file: "content/home.json"
         fields:
-          - { label: "Site Title", name: "siteTitle", widget: "string" }
-          - { label: "Tagline", name: "tagline", widget: "string" }
-          - { label: "Intro Text", name: "intro", widget: "text" }
-          - { label: "Primary Button Text", name: "heroButton1", widget: "string" }
-          - { label: "Primary Button URL", name: "heroButton1Url", widget: "string" }
-          - { label: "Secondary Button Text", name: "heroButton2", widget: "string" }
-          - { label: "Secondary Button URL", name: "heroButton2Url", widget: "string" }
+          - { label: "Hero Eyebrow", name: "heroEyebrow", widget: "string" }
+          - { label: "Hero Title", name: "heroTitle", widget: "string" }
+          - { label: "Hero Text", name: "heroText", widget: "text" }
+          - { label: "Hero Image", name: "heroImage", widget: "image" }
+
+          - { label: "Primary Button Text", name: "primaryButtonText", widget: "string" }
+          - { label: "Primary Button URL", name: "primaryButtonUrl", widget: "string" }
+          - { label: "Secondary Button Text", name: "secondaryButtonText", widget: "string" }
+          - { label: "Secondary Button URL", name: "secondaryButtonUrl", widget: "string" }
+
+          - { label: "Intro Kicker", name: "introKicker", widget: "string" }
+          - { label: "Intro Title", name: "introTitle", widget: "string" }
+          - { label: "Intro Text", name: "introText", widget: "text" }
