@@ -1,9 +1,15 @@
 {
-  "siteTitle": "The Wesley at UK",
-  "tagline": "A Place to Seek God Together",
-  "intro": "We are a community of people trying to follow Jesus on our campus, in our city, and around the world.",
-  "heroButton1": "Apply for Housing",
-  "heroButton1Url": "/housing/apply",
-  "heroButton2": "Get Involved",
-  "heroButton2Url": "/get-involved/ministry"
+  "heroEyebrow": "Welcome to",
+  "heroTitle": "THE WESLEY",
+  "heroText": "A place to seek God together at the University of Kentucky — a campus ministry and Christian living community for students who want to grow in faith, friendship, and purpose.",
+  "heroImage": "/media/ukwf-building.png",
+
+  "primaryButtonText": "Apply for Housing",
+  "primaryButtonUrl": "/housing/apply",
+  "secondaryButtonText": "Get Involved",
+  "secondaryButtonUrl": "/get-involved/ministry",
+
+  "introKicker": "Campus Ministry + Christian Housing",
+  "introTitle": "A Place to Seek God Together",
+  "introText": "We are a community of people trying to follow Jesus on our campus, in our city, and around the world. The Wesley is UK’s Christian ministry with a residential community — a place to live, worship, pray, serve, and belong."
 }
