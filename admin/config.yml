@@ -1,1 +1,23 @@
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/YOUR-REPO-NAME
+  branch: main
 
+media_folder: "media/uploads"
+public_folder: "/media/uploads"
+
+collections:
+  - name: "pages"
+    label: "Website Pages"
+    files:
+      - label: "Homepage"
+        name: "home"
+        file: "content/home.json"
+        fields:
+          - { label: "Site Title", name: "siteTitle", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Intro Text", name: "intro", widget: "text" }
+          - { label: "Primary Button Text", name: "heroButton1", widget: "string" }
+          - { label: "Primary Button URL", name: "heroButton1Url", widget: "string" }
+          - { label: "Secondary Button Text", name: "heroButton2", widget: "string" }
+          - { label: "Secondary Button URL", name: "heroButton2Url", widget: "string" }
