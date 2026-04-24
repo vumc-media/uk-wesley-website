@@ -1,1 +1,9 @@
-
+{
+  "siteTitle": "The Wesley at UK",
+  "tagline": "A Place to Seek God Together",
+  "intro": "We are a community of people trying to follow Jesus on our campus, in our city, and around the world.",
+  "heroButton1": "Apply for Housing",
+  "heroButton1Url": "/housing/apply",
+  "heroButton2": "Get Involved",
+  "heroButton2Url": "/get-involved/ministry"
+}
