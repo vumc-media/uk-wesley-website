@@ -48,6 +48,28 @@ async function loadHomeContent() {
 
 loadHomeContent();
 </script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+
+    // THIS is the important part 👇
+    window.netlifyIdentity.on("open", () => {
+      console.log("Identity widget opened");
+    });
+
+    window.netlifyIdentity.on("error", err => {
+      console.error("Identity error", err);
+    });
+  }
+</script>
   
 body{
   margin:0;
