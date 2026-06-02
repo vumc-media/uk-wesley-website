@@ -3,36 +3,619 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>The Wesley at UK</title>
   <meta name="description" content="The Wesley at UK is a campus ministry and Christian residential community at the University of Kentucky." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #3867c8;
+      --blue-dark: #244b9c;
+      --gold: #f2c14e;
+      --ink: #171717;
+      --muted: #555;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --footer: #303030;
+      --shadow: 0 18px 45px rgba(0,0,0,.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Bitter", Georgia, serif;
+      background: var(--white);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.16);
+    }
+
+    .announcement {
+      min-height: 44px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .announcement a {
+      padding: 7px 22px;
+      border: 1px solid #111;
+      border-radius: 3px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .announcement a:hover {
+      background: #111;
+      color: var(--white);
+    }
+
+    .navbar {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 24px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .menu-lines {
+      display: grid;
+      gap: 5px;
+    }
+
+    .menu-lines span {
+      width: 24px;
+      height: 2px;
+      display: block;
+      background: var(--white);
+    }
+
+    .main-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .main-menu > li {
+      position: relative;
+    }
+
+    .main-menu a,
+    .main-menu button {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main-menu a:hover,
+    .main-menu button:hover,
+    .main-menu .active {
+      background: rgba(255,255,255,.14);
+    }
+
+    .has-submenu > button::after {
+      content: "⌄";
+      margin-left: 7px;
+      font-size: 13px;
+    }
+
+    .has-submenu ul {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 235px;
+      padding: 8px 0;
+      margin: 0;
+      list-style: none;
+      background: var(--blue-dark);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: .18s ease;
+    }
+
+    .has-submenu:hover ul,
+    .has-submenu:focus-within ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .has-submenu ul a {
+      min-height: auto;
+      padding: 12px 18px;
+      justify-content: flex-start;
+    }
+
+    .hero {
+      position: relative;
+      min-height: clamp(500px, 66vw, 760px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      color: var(--white);
+      text-align: center;
+      background:
+        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.48)),
+        url("PASTE-HERO-IMAGE-URL-HERE");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        linear-gradient(rgba(20,58,130,.70), rgba(20,58,130,.70)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.10) 0 14px, rgba(255,255,255,.04) 14px 28px);
+      color: rgba(255,255,255,.82);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(18px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .hero.has-image .hero-placeholder {
+      display: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(980px, calc(100% - 32px));
+      padding: 48px 0;
+    }
+
+    .hero-kicker {
+      margin: 0 0 12px;
+      font-size: clamp(18px, 2vw, 24px);
+      font-style: italic;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(54px, 9vw, 112px);
+      line-height: .92;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 24px auto 0;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.45;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--white);
+      border: 2px solid var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: .03em;
+      transition: .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    .btn-light {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--blue-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .section {
+      padding: clamp(58px, 8vw, 96px) 0;
+    }
+
+    .intro {
+      background: var(--light);
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    .section-lead {
+      width: min(860px, 100%);
+      margin: 0 auto;
+      color: #262626;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .equal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(26px, 4vw, 44px);
+      margin-top: 42px;
+    }
+
+    .feature-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .image-placeholder {
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        linear-gradient(rgba(56,103,200,.76), rgba(56,103,200,.76)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 12px, rgba(255,255,255,.06) 12px 24px);
+      color: rgba(255,255,255,.9);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .feature-card img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .feature-body {
+      padding: clamp(26px, 4vw, 42px);
+    }
+
+    .feature-body h2 {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.08;
+    }
+
+    .feature-body p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .feature-list {
+      margin: 0 0 28px;
+      padding-left: 1.2rem;
+      color: #252525;
+      line-height: 1.7;
+    }
+
+    .split-section {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .split-section .section-title,
+    .split-section .section-lead {
+      color: var(--white);
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .quick-link {
+      min-height: 100px;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.14);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+
+    .quick-link:hover {
+      background: rgba(255,255,255,.24);
+      transform: translateY(-2px);
+    }
+
+    .cta {
+      text-align: center;
+      background: var(--light);
+    }
+
+    .cta-card {
+      width: min(980px, 100%);
+      margin: 0 auto;
+      padding: clamp(34px, 6vw, 64px);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-card p {
+      width: min(760px, 100%);
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .site-footer {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+      padding: 44px 16px;
+      background: var(--footer);
+      color: var(--white);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .site-footer a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1060px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 0 16px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0 18px;
+      }
+
+      .main-menu.open {
+        display: flex;
+      }
+
+      .main-menu > li {
+        width: 100%;
+      }
+
+      .main-menu a,
+      .main-menu button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+
+      .has-submenu ul {
+        position: static;
+        min-width: auto;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0,0,0,.16);
+      }
+
+      .has-submenu.open ul {
+        display: block;
+      }
+
+      .has-submenu:hover ul {
+        display: none;
+      }
+
+      .has-submenu.open:hover ul {
+        display: block;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .announcement {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .brand {
+        font-size: 17px;
+      }
+
+      .hero {
+        min-height: 560px;
+      }
+
+      .equal-grid,
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
+
+      .image-placeholder {
+        min-height: 220px;
+      }
+
+      .feature-body {
+        padding: 28px 22px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="announcement">
       <span>Job Opportunity at the Wesley!</span>
-      <a href="job-opportunities.html">Learn More</a>
+      <a href="Jobs.html">Learn More</a>
     </div>
 
     <nav class="navbar" aria-label="Main navigation">
       <a class="brand" href="index.html">
-        <img src="media/uploads/uk-wesley-logo.png" alt="" />
+        <span class="brand-logo">UKW</span>
         <span>The Wesley at UK</span>
       </a>
 
       <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
-        <span></span><span></span><span></span>
-        <strong>Menu</strong>
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        Menu
       </button>
 
       <ul id="main-menu" class="main-menu">
         <li><a class="active" href="index.html">Home</a></li>
 
         <li class="has-submenu">
-          <button>About Us</button>
+          <button type="button">About Us</button>
           <ul>
             <li><a href="our-mission.html">Our Mission</a></li>
             <li><a href="contact-us.html">Contact Us</a></li>
@@ -40,7 +623,7 @@
         </li>
 
         <li class="has-submenu">
-          <button>Housing</button>
+          <button type="button">Housing</button>
           <ul>
             <li><a href="dorm.html">Dorm</a></li>
             <li><a href="location.html">Location</a></li>
@@ -49,7 +632,7 @@
         </li>
 
         <li class="has-submenu">
-          <button>Get Involved</button>
+          <button type="button">Get Involved</button>
           <ul>
             <li><a href="ministry.html">Ministry</a></li>
             <li><a href="weekly-programs.html">Weekly Programs</a></li>
@@ -61,31 +644,45 @@
         <li><a href="events.html">Events</a></li>
 
         <li class="has-submenu">
-          <button>Support Our Mission</button>
+          <button type="button">Support Our Mission</button>
           <ul>
             <li><a href="support-gods-work.html">Support God's Work</a></li>
             <li><a href="donate.html">Donate</a></li>
           </ul>
         </li>
 
-        <li><a href="job-opportunities.html">Job Opportunities</a></li>
+        <li><a href="Jobs.html">Job Opportunities</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
+    <!-- To use a real hero image:
+      1. Upload the image to /media/uploads/
+      2. Replace PASTE-HERO-IMAGE-URL-HERE in the CSS with something like:
+         media/uploads/ukwf-hero.png
+      3. Add class "has-image" to the section below:
+         <section class="hero has-image">
+    -->
     <section class="hero">
-      <div class="hero-overlay"></div>
+      <div class="hero-placeholder">Hero Image Placeholder</div>
       <div class="hero-content">
-        <p>Welcome to</p>
+        <p class="hero-kicker">Welcome to</p>
         <h1>The Wesley</h1>
+        <p class="hero-subtitle">
+          A campus ministry and Christian residential community at the University of Kentucky.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="ministry.html">Explore Ministry</a>
+          <a class="btn btn-outline" href="dorm.html">Learn About Housing</a>
+        </div>
       </div>
     </section>
 
-    <section class="intro">
-      <div class="container narrow">
-        <h2>A Place to Seek God Together</h2>
-        <p>
+    <section class="section intro">
+      <div class="container">
+        <h2 class="section-title">A Place to Seek God Together</h2>
+        <p class="section-lead">
           We are a community of people trying to follow Jesus on our campus, in our city, and around the world.
           We are UK’s only Christian ministry that has a residential ministry, meaning that we are both a campus
           ministry and a Christian living community.
@@ -93,25 +690,84 @@
       </div>
     </section>
 
-    <section class="cards-section">
-      <div class="container card-grid">
-        <article class="feature-card">
-          <img src="media/uploads/ukwf-worship.png" alt="Students worshiping together at The Wesley" />
-          <div class="card-body">
-            <h2>Ministry</h2>
-            <p>Learn about our ministry, weekly programs, or ways to support God’s work.</p>
-            <a class="button" href="ministry.html">Learn More</a>
-          </div>
-        </article>
+    <section class="section">
+      <div class="container">
+        <div class="equal-grid">
+          <article class="feature-card">
+            <!-- Replace this placeholder with:
+              <img src="media/uploads/your-ministry-image.png" alt="Students worshiping and gathering at The Wesley">
+            -->
+            <div class="image-placeholder">Ministry Image Placeholder</div>
 
-        <article class="feature-card">
-          <img src="media/uploads/ukwf-dorm.png" alt="Students gathered in the dorm community space" />
-          <div class="card-body">
-            <h2>Dorm</h2>
-            <p>Need a place to stay during your college journey? Come join us at our off-campus, next-to-campus dorm!</p>
-            <a class="button" href="dorm.html">Find Out How</a>
+            <div class="feature-body">
+              <h2>Campus Ministry</h2>
+              <p>
+                Find a place to worship, pray, serve, ask honest questions, build friendships, and grow as a follower of Jesus.
+              </p>
+              <ul class="feature-list">
+                <li>Weekly worship and gatherings</li>
+                <li>Discipleship and leadership development</li>
+                <li>Prayer, service, and community life</li>
+              </ul>
+              <a class="btn" href="ministry.html">Learn More</a>
+            </div>
+          </article>
+
+          <article class="feature-card">
+            <!-- Replace this placeholder with:
+              <img src="media/uploads/your-dorm-image.png" alt="Students gathered in The Wesley residential community">
+            -->
+            <div class="image-placeholder">Dorm Image Placeholder</div>
+
+            <div class="feature-body">
+              <h2>Residential Community</h2>
+              <p>
+                Need a place to stay during your college journey? Join a Christian living community near campus where students grow together.
+              </p>
+              <ul class="feature-list">
+                <li>Off-campus, next-to-campus housing</li>
+                <li>Shared community and spiritual formation</li>
+                <li>A supportive place to belong during college</li>
+              </ul>
+              <a class="btn" href="dorm.html">Find Out How</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split-section">
+      <div class="container split-grid">
+        <div>
+          <h2 class="section-title">Get Connected</h2>
+          <p class="section-lead">
+            Whether you are looking for worship, housing, leadership, prayer, or a community to walk with you,
+            The Wesley is a place to take your next step.
+          </p>
+        </div>
+
+        <div class="quick-links">
+          <a class="quick-link" href="weekly-programs.html">Weekly Programs</a>
+          <a class="quick-link" href="events.html">Upcoming Events</a>
+          <a class="quick-link" href="apply.html">Apply for Housing</a>
+          <a class="quick-link" href="prayer.html">Prayer</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container">
+        <div class="cta-card">
+          <h2 class="section-title">Support God’s Work Through The Wesley</h2>
+          <p>
+            Your generosity helps students encounter Christ, find community, grow as leaders,
+            and experience a Christian home near campus.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="donate.html">Donate</a>
+            <a class="btn" href="support-gods-work.html">Support Our Mission</a>
           </div>
-        </article>
+        </div>
       </div>
     </section>
   </main>
@@ -120,8 +776,27 @@
     <strong>The Wesley at The University of Kentucky</strong>
     <span>508 Columbia Ave | Lexington, KY 40508</span>
     <span>(859) 254-0231</span>
+    <span><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></span>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainMenu = document.querySelector("#main-menu");
+    const submenuButtons = document.querySelectorAll(".has-submenu > button");
+
+    menuToggle?.addEventListener("click", () => {
+      const isOpen = mainMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    submenuButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 1060) {
+          const parent = button.closest(".has-submenu");
+          parent.classList.toggle("open");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
