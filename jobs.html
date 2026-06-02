@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Job Opportunities | The Wesley at UK</title>
+  <meta name="description" content="Job opportunity for Head Resident at the Wesley Foundation at the University of Kentucky.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #3867c8;
+      --blue-dark: #244b9c;
+      --ink: #171717;
+      --muted: #555555;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --footer: #303030;
+      --shadow: 0 18px 45px rgba(0,0,0,.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Bitter", Georgia, serif;
+      background: var(--white);
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.16);
+    }
+
+    .navbar {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 24px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .menu-lines {
+      display: grid;
+      gap: 5px;
+    }
+
+    .menu-lines span {
+      width: 24px;
+      height: 2px;
+      display: block;
+      background: var(--white);
+    }
+
+    .main-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .main-menu > li {
+      position: relative;
+    }
+
+    .main-menu a,
+    .main-menu button {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main-menu a:hover,
+    .main-menu button:hover,
+    .main-menu .active {
+      background: rgba(255,255,255,.14);
+    }
+
+    .has-submenu > button::after {
+      content: "⌄";
+      margin-left: 7px;
+      font-size: 13px;
+    }
+
+    .has-submenu ul {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 235px;
+      padding: 8px 0;
+      margin: 0;
+      list-style: none;
+      background: var(--blue-dark);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: .18s ease;
+    }
+
+    .has-submenu:hover ul,
+    .has-submenu:focus-within ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .has-submenu ul a {
+      min-height: auto;
+      padding: 12px 18px;
+      justify-content: flex-start;
+    }
+
+    .page-hero {
+      min-height: clamp(260px, 32vw, 420px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+        url("media/uploads/image-4.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+
+    .content-section {
+      padding: clamp(48px, 7vw, 88px) 0 clamp(70px, 9vw, 120px);
+      background: var(--white);
+    }
+
+    .job-card {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .job-card h2 {
+      margin: 0 0 24px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    .job-card h3 {
+      margin: 34px 0 12px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.15;
+    }
+
+    .job-card h4 {
+      margin: 24px 0 8px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+
+    .job-card p {
+      margin: 0 0 18px;
+      color: #262626;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .job-card ul {
+      margin: 0 0 18px 1.25rem;
+      padding: 0;
+      color: #262626;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .job-card li {
+      margin: 6px 0;
+    }
+
+    .apply-box {
+      margin-top: 42px;
+      padding: clamp(24px, 4vw, 34px);
+      border-radius: 16px;
+      background: var(--light);
+      text-align: center;
+    }
+
+    .apply-box p {
+      margin: 0 auto 22px;
+      max-width: 680px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--white);
+      border: 2px solid var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: .03em;
+    }
+
+    .btn:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    .site-footer {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+      padding: 44px 16px;
+      background: var(--footer);
+      color: var(--white);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .site-footer a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1060px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 0 16px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0 18px;
+      }
+
+      .main-menu.open {
+        display: flex;
+      }
+
+      .main-menu > li {
+        width: 100%;
+      }
+
+      .main-menu a,
+      .main-menu button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+
+      .has-submenu ul {
+        position: static;
+        min-width: auto;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0,0,0,.16);
+      }
+
+      .has-submenu.open ul {
+        display: block;
+      }
+
+      .has-submenu:hover ul {
+        display: none;
+      }
+
+      .has-submenu.open:hover ul {
+        display: block;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .brand {
+        font-size: 17px;
+      }
+
+      .page-hero {
+        min-height: 300px;
+      }
+
+      .job-card {
+        width: min(100% - 24px, 900px);
+        padding: 26px 20px;
+      }
+
+      .job-card p,
+      .job-card ul {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">UKW</span>
+        <span>The Wesley at UK</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        Menu
+      </button>
+
+      <ul id="main-menu" class="main-menu">
+        <li><a href="index.html">Home</a></li>
+
+        <li class="has-submenu">
+          <button type="button">About Us</button>
+          <ul>
+            <li><a href="our-mission.html">Our Mission</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button type="button">Housing</button>
+          <ul>
+            <li><a href="dorm.html">Dorm</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="apply.html">Apply</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button type="button">Get Involved</button>
+          <ul>
+            <li><a href="ministry.html">Ministry</a></li>
+            <li><a href="weekly-programs.html">Weekly Programs</a></li>
+            <li><a href="leadership-academy.html">Leadership Academy</a></li>
+            <li><a href="prayer.html">Prayer</a></li>
+          </ul>
+        </li>
+
+        <li><a href="events.html">Events</a></li>
+
+        <li class="has-submenu">
+          <button type="button">Support Our Mission</button>
+          <ul>
+            <li><a href="support-gods-work.html">Support God's Work</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </li>
+
+        <li><a class="active" href="Jobs.html">Job Opportunities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>Job Opportunities</h1>
+    </section>
+
+    <section class="content-section">
+      <article class="job-card">
+        <h2>Head Resident – Wesley Foundation at the University of Kentucky</h2>
+
+        <h3>Position Summary</h3>
+        <p>
+          The Head Resident serves as an assistant spiritual and community leader of the Wesley residential ministry.
+          This role cultivates a Christ-centered living environment where students grow in faith, leadership, and community
+          while ensuring the residence hall operates safely, smoothly, and hospitably. The Head Resident oversees daily
+          operations of the building and partners closely with the Campus Director to support the mission of the Wesley Foundation.
+        </p>
+
+        <h3>Core Responsibilities</h3>
+
+        <h4>Spiritual Leadership &amp; Community Life</h4>
+        <ul>
+          <li>Foster a Christ-centered culture rooted in humility, integrity, and discipleship.</li>
+          <li>Provide relational care to residents, offering mentorship, prayer, and encouragement.</li>
+          <li>Work with RAs to address roommate conflicts and personal concerns, connecting students to campus/community resources when needed.</li>
+          <li>Encourage healthy, respectful behavior and a positive living environment.</li>
+        </ul>
+
+        <h4>Student Leader Development</h4>
+        <ul>
+          <li>Recruit, train, support, and supervise Resident Assistants and student leaders.</li>
+          <li>Coach students leading outreach, small groups, and events so they feel equipped and encouraged.</li>
+          <li>Delegate responsibilities and empower residents to serve and take ownership of the community.</li>
+        </ul>
+
+        <h4>Residential Operations &amp; Administration</h4>
+        <ul>
+          <li>Oversee day-to-day dorm operations including safety, cleanliness, and policy compliance.</li>
+          <li>Manage room assignments, tours, move-in/out processes, keys, and damage reporting.</li>
+          <li>Maintain clear communication with residents and staff.</li>
+          <li>Coordinate building chores and shared responsibilities with residents.</li>
+          <li>Oversee Resident/Non-Resident parking and Game Day parking.</li>
+        </ul>
+
+        <h4>Facilities &amp; Maintenance</h4>
+        <ul>
+          <li>Communicate with cleaning and maintenance vendors and track repair needs.</li>
+          <li>Order supplies and manage basic inventory, including paper goods and cleaning supplies.</li>
+          <li>Schedule inspections, pest control, and minor maintenance projects.</li>
+          <li>Respond promptly to facility concerns and communicate with appropriate maintenance contacts and leadership.</li>
+        </ul>
+
+        <h4>Hospitality &amp; Partnerships</h4>
+        <ul>
+          <li>Help create welcoming spaces through attending meals, events, and participating in shared life.</li>
+          <li>Collaborate closely with the Campus Director and Wesley leadership team.</li>
+        </ul>
+
+        <h3>Qualifications</h3>
+        <ul>
+          <li>Growing Christian faith and commitment to servant leadership.</li>
+          <li>Experience in discipleship, mentoring, or student leadership.</li>
+          <li>Strong relational, organizational, and communication skills.</li>
+          <li>Ability to oversee facilities and logistics responsibly.</li>
+          <li>Self-starter who works independently and as part of a team.</li>
+          <li>Preferred: seminary student or graduate student with a heart for campus ministry.</li>
+        </ul>
+
+        <h3>Compensation &amp; Housing</h3>
+        <ul>
+          <li>Furnished private bedroom and private bathroom within the Wesley residence community provided at no cost.</li>
+          <li>Utilities and parking included.</li>
+          <li>$10,000 annual stipend.</li>
+        </ul>
+
+        <h3>Work Environment</h3>
+        <ul>
+          <li>Live-in position within the Wesley residence community.</li>
+          <li>Includes evening and weekend responsibilities consistent with residential ministry.</li>
+          <li>Flexible scheduling with encouraged time off for personal health and Sabbath.</li>
+        </ul>
+
+        <div class="apply-box">
+          <h3>To Apply</h3>
+          <p>Please send a cover letter and résumé to ukywesley@gmail.com.</p>
+          <a class="btn" href="mailto:ukiwesley@gmail.com">Apply by Email</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong>The Wesley at The University of Kentucky</strong>
+    <span>508 Columbia Ave | Lexington, KY 40508</span>
+    <span>(859) 254-0231</span>
+    <span><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></span>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainMenu = document.querySelector("#main-menu");
+    const submenuButtons = document.querySelectorAll(".has-submenu > button");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    submenuButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 1060) {
+          const parent = button.closest(".has-submenu");
+          parent.classList.toggle("open");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
