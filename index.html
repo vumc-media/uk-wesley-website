@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>The Wesley at UK</title>
-  <meta name="description" content="The Wesley at UK is a campus ministry and Christian residential community at the University of Kentucky." />
+  <meta name="description" content="The Wesley at UK is a campus ministry and Christian residential community at the University of Kentucky.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +15,8 @@
     :root {
       --blue: #3867c8;
       --blue-dark: #244b9c;
-      --gold: #f2c14e;
       --ink: #171717;
-      --muted: #555;
+      --muted: #555555;
       --light: #f4f6f9;
       --white: #ffffff;
       --footer: #303030;
@@ -29,10 +28,6 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       color: var(--ink);
@@ -41,6 +36,7 @@
     }
 
     img {
+      width: 100%;
       max-width: 100%;
       display: block;
     }
@@ -76,15 +72,14 @@
 
     .announcement a {
       padding: 7px 22px;
-      border: 1px solid #111;
+      border: 1px solid #111111;
       border-radius: 3px;
       text-decoration: none;
       font-weight: 700;
-      transition: .2s ease;
     }
 
     .announcement a:hover {
-      background: #111;
+      background: #111111;
       color: var(--white);
     }
 
@@ -218,44 +213,20 @@
     }
 
     .hero {
-      position: relative;
       min-height: clamp(500px, 66vw, 760px);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      color: var(--white);
       background:
-        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.48)),
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
         url("media/uploads/image-4.jpg");
       background-size: cover;
       background-position: center;
     }
 
-    .hero-placeholder {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background:
-        linear-gradient(rgba(20,58,130,.70), rgba(20,58,130,.70)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.10) 0 14px, rgba(255,255,255,.04) 14px 28px);
-      color: rgba(255,255,255,.82);
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(18px, 3vw, 32px);
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .hero.has-image .hero-placeholder {
-      display: none;
-    }
-
     .hero-content {
-      position: relative;
-      z-index: 2;
       width: min(980px, calc(100% - 32px));
       padding: 48px 0;
     }
@@ -282,7 +253,7 @@
       line-height: 1.45;
     }
 
-    .hero-actions {
+    .button-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -306,11 +277,9 @@
       text-transform: uppercase;
       text-decoration: none;
       letter-spacing: .03em;
-      transition: .2s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
       background: var(--blue-dark);
       border-color: var(--blue-dark);
     }
@@ -356,7 +325,6 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: clamp(26px, 4vw, 44px);
-      margin-top: 42px;
     }
 
     .feature-card {
@@ -366,25 +334,7 @@
       box-shadow: var(--shadow);
     }
 
-    .image-placeholder {
-      min-height: 280px;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background:
-        linear-gradient(rgba(56,103,200,.76), rgba(56,103,200,.76)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 12px, rgba(255,255,255,.06) 12px 24px);
-      color: rgba(255,255,255,.9);
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
     .feature-card img {
-      width: 100%;
       aspect-ratio: 16 / 10;
       object-fit: cover;
     }
@@ -450,12 +400,10 @@
       font-size: 18px;
       font-weight: 800;
       text-decoration: none;
-      transition: .2s ease;
     }
 
     .quick-link:hover {
       background: rgba(255,255,255,.24);
-      transform: translateY(-2px);
     }
 
     .cta {
@@ -578,10 +526,6 @@
         grid-template-columns: 1fr;
       }
 
-      .image-placeholder {
-        min-height: 220px;
-      }
-
       .feature-body {
         padding: 28px 22px;
       }
@@ -657,13 +601,6 @@
   </header>
 
   <main>
-    <!-- To use a real hero image:
-      1. Upload the image to /media/uploads/
-      2. Replace PASTE-HERO-IMAGE-URL-HERE in the CSS with something like:
-         media/uploads/ukwf-hero.png
-      3. Add class "has-image" to the section below:
-         <section class="hero has-image">
-    -->
     <section class="hero">
       <div class="hero-content">
         <p class="hero-kicker">Welcome to</p>
@@ -671,7 +608,7 @@
         <p class="hero-subtitle">
           A campus ministry and Christian residential community at the University of Kentucky.
         </p>
-        <div class="hero-actions">
+        <div class="button-row">
           <a class="btn btn-light" href="ministry.html">Explore Ministry</a>
           <a class="btn btn-outline" href="dorm.html">Learn About Housing</a>
         </div>
@@ -690,44 +627,38 @@
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="equal-grid">
-          <article class="feature-card">
-            <!-- Replace this placeholder with:
-              <img src="media/uploads/ukwf-worship.jpg" alt="Students worshiping and gathering at The Wesley">
-            -->
-            <div class="feature-body">
-              <h2>Campus Ministry</h2>
-              <p>
-                Find a place to worship, pray, serve, ask honest questions, build friendships, and grow as a follower of Jesus.
-              </p>
-              <ul class="feature-list">
-                <li>Weekly worship and gatherings</li>
-                <li>Discipleship and leadership development</li>
-                <li>Prayer, service, and community life</li>
-              </ul>
-              <a class="btn" href="ministry.html">Learn More</a>
-            </div>
-          </article>
+      <div class="container equal-grid">
+        <article class="feature-card">
+          <img src="media/uploads/ukwf-worship.png" alt="Students worshiping and gathering at The Wesley">
+          <div class="feature-body">
+            <h2>Campus Ministry</h2>
+            <p>
+              Find a place to worship, pray, serve, ask honest questions, build friendships, and grow as a follower of Jesus.
+            </p>
+            <ul class="feature-list">
+              <li>Weekly worship and gatherings</li>
+              <li>Discipleship and leadership development</li>
+              <li>Prayer, service, and community life</li>
+            </ul>
+            <a class="btn" href="ministry.html">Learn More</a>
+          </div>
+        </article>
 
-          <article class="feature-card">
-            <!-- Replace this placeholder with:
-              <img src="media/uploads/dorm.png" alt="Students gathered in The Wesley residential community">
-            -->
-            <div class="feature-body">
-              <h2>Residential Community</h2>
-              <p>
-                Need a place to stay during your college journey? Join a Christian living community near campus where students grow together.
-              </p>
-              <ul class="feature-list">
-                <li>Off-campus, next-to-campus housing</li>
-                <li>Shared community and spiritual formation</li>
-                <li>A supportive place to belong during college</li>
-              </ul>
-              <a class="btn" href="dorm.html">Find Out How</a>
-            </div>
-          </article>
-        </div>
+        <article class="feature-card">
+          <img src="media/uploads/dorm.png" alt="Students gathered in The Wesley residential community">
+          <div class="feature-body">
+            <h2>Residential Community</h2>
+            <p>
+              Need a place to stay during your college journey? Join a Christian living community near campus where students grow together.
+            </p>
+            <ul class="feature-list">
+              <li>Off-campus, next-to-campus housing</li>
+              <li>Shared community and spiritual formation</li>
+              <li>A supportive place to belong during college</li>
+            </ul>
+            <a class="btn" href="dorm.html">Find Out How</a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -758,7 +689,7 @@
             Your generosity helps students encounter Christ, find community, grow as leaders,
             and experience a Christian home near campus.
           </p>
-          <div class="hero-actions">
+          <div class="button-row">
             <a class="btn" href="donate.html">Donate</a>
             <a class="btn" href="support-gods-work.html">Support Our Mission</a>
           </div>
@@ -779,7 +710,7 @@
     const mainMenu = document.querySelector("#main-menu");
     const submenuButtons = document.querySelectorAll(".has-submenu > button");
 
-    menuToggle?.addEventListener("click", () => {
+    menuToggle.addEventListener("click", () => {
       const isOpen = mainMenu.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
