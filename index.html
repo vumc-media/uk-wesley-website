@@ -1,644 +1,300 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Wesley at UK</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wesley at UK</title>
+  <meta name="description" content="The Wesley at UK is a Christian campus ministry and residential ministry at the University of Kentucky in Lexington, Kentucky." />
 
-<style>
-:root{
-  --blue:#2f63c7;
-  --blue-dark:#1f4fa8;
-  --dark:#101828;
-  --light:#f5f7fb;
-  --gold:#f4c542;
-  --white:#ffffff;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
 
-*{
-  box-sizing:border-box;
-}
+  <style>
+    :root {
+      --wesley-blue: #3967c3;
+      --dark: #212121;
+      --light: #ffffff;
+      --soft: #f4f6fb;
+      --muted: #666;
+      --max-width: 1120px;
+    }
 
-  <script>
-async function loadHomeContent() {
-  try {
-    const res = await fetch('/content/home.json?cache=' + Date.now());
-    const data = await res.json();
+    * {
+      box-sizing: border-box;
+    }
 
-    document.querySelector('.eyebrow').textContent = data.heroEyebrow;
-    document.querySelector('.hero h1').textContent = data.heroTitle;
-    document.querySelector('.hero p').textContent = data.heroText;
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Bitter", Georgia, serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.6;
+    }
 
-    document.querySelector('.hero').style.background =
-      `linear-gradient(to right, rgba(0,0,0,.78), rgba(0,0,0,.28)), url("${data.heroImage}") center/cover`;
+    a {
+      color: inherit;
+    }
 
-    const buttons = document.querySelectorAll('.hero .btn');
-    buttons[0].textContent = data.primaryButtonText;
-    buttons[0].href = data.primaryButtonUrl;
-    buttons[1].textContent = data.secondaryButtonText;
-    buttons[1].href = data.secondaryButtonUrl;
+    .page {
+      width: 100%;
+      overflow: hidden;
+    }
 
-    document.querySelector('.intro .kicker').textContent = data.introKicker;
-    document.querySelector('.intro h2').textContent = data.introTitle;
-    document.querySelector('.intro .lead').textContent = data.introText;
-  } catch (err) {
-    console.warn('Home content file could not be loaded.', err);
-  }
-}
+    .notice {
+      background: #ffffff;
+      border-bottom: 1px solid #e7e7e7;
+      padding: 14px 20px;
+      text-align: center;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 700;
+    }
 
-loadHomeContent();
-</script>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    .notice a {
+      display: inline-block;
+      margin-left: 12px;
+      padding: 7px 14px;
+      border: 1px solid #111;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all .2s ease;
+    }
 
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
+    .notice a:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .hero {
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 80px 22px;
+      position: relative;
+      background:
+        linear-gradient(rgba(25, 25, 25, 0.58), rgba(25, 25, 25, 0.58)),
+        url("https://lh3.googleusercontent.com/sitesv/AA5AbUCS-ol1l_HjW975axTIaHJXBphFUenUCuwBb8Hsb9V_iRtuuajnNc4oY34EkyFF3YvlxnQKtlpWQJ0TubZXIEYTnv8-GmYXY4rtMblm4R0ehiCL2k4rzdXAaO0kaBy6Zg8H8dYis1YLg0YAkQBMVYTIdA8_j6MISY5UEaBiW3VtJ1giCmk4sPE8Veg=w16383") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 920px;
+    }
+
+    .hero-logo {
+      width: min(220px, 55vw);
+      margin: 0 auto 24px;
+      display: block;
+      filter: drop-shadow(0 8px 22px rgba(0,0,0,.35));
+    }
+
+    .eyebrow {
+      font-family: "Montserrat", Arial, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      margin: 0 0 4px;
+    }
+
+    h1 {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(3.25rem, 8vw, 6.2rem);
+      line-height: .95;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      margin: 24px auto 0;
+      font-weight: 700;
+    }
+
+    .intro {
+      padding: 70px 22px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .intro p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+    }
+
+    .cards-section {
+      background: var(--soft);
+      padding: 70px 22px;
+    }
+
+    .cards {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,.10);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 34px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card h2 {
+      font-family: "Montserrat", Arial, sans-serif;
+      color: var(--wesley-blue);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      margin: 0 0 18px;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .card p {
+      font-size: 1.08rem;
+      margin: 0 0 28px;
+    }
+
+    .btn {
+      margin-top: auto;
+      align-self: flex-start;
+      display: inline-block;
+      background: var(--wesley-blue);
+      color: #fff;
+      text-decoration: none;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 999px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(57,103,195,.25);
+    }
+
+    .footer {
+      background: #3a3a3a;
+      color: #fff;
+      text-align: center;
+      padding: 48px 22px;
+    }
+
+    .footer h2 {
+      font-family: "Montserrat", Arial, sans-serif;
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+    }
+
+    .footer p {
+      margin: 5px 0;
+      font-size: 1rem;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 760px) {
+      .notice a {
+        display: table;
+        margin: 10px auto 0;
       }
-    });
 
-    // THIS is the important part 👇
-    window.netlifyIdentity.on("open", () => {
-      console.log("Identity widget opened");
-    });
+      .hero {
+        min-height: 470px;
+        padding: 60px 18px;
+      }
 
-    window.netlifyIdentity.on("error", err => {
-      console.error("Identity error", err);
-    });
-  }
-</script>
-  
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--light);
-  color:var(--dark);
-}
+      .cards {
+        grid-template-columns: 1fr;
+      }
 
-a{
-  color:inherit;
-}
-
-/* NAV */
-.site-header{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:100;
-  background:rgba(47,99,199,.96);
-  color:white;
-  box-shadow:0 8px 24px rgba(0,0,0,.18);
-}
-
-.nav-wrap{
-  max-width:1280px;
-  margin:auto;
-  padding:12px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:800;
-  letter-spacing:.2px;
-  text-decoration:none;
-}
-
-.logo-mark{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:white;
-  color:var(--blue);
-  display:grid;
-  place-items:center;
-  font-size:.75rem;
-  font-weight:900;
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
-
-.nav-links a{
-  color:white;
-  text-decoration:none;
-  font-size:.92rem;
-  font-weight:700;
-  opacity:.95;
-}
-
-.nav-links a:hover{
-  opacity:1;
-  text-decoration:underline;
-  text-underline-offset:6px;
-}
-
-.nav-cta{
-  background:var(--gold);
-  color:#111 !important;
-  padding:9px 14px;
-  border-radius:999px;
-}
-
-/* HERO */
-.hero{
-  min-height:92vh;
-  display:flex;
-  align-items:center;
-  padding:120px 6% 80px;
-  color:white;
-  background:
-    linear-gradient(to right, rgba(0,0,0,.78), rgba(0,0,0,.28)),
-    url("media/ukwf-building.png");
-  background-size:cover;
-  background-position:center;
-}
-
-.hero-inner{
-  max-width:1280px;
-  width:100%;
-  margin:auto;
-}
-
-.hero-content{
-  max-width:680px;
-}
-
-.eyebrow{
-  font-family:Georgia, serif;
-  font-style:italic;
-  font-size:1.1rem;
-  margin-bottom:14px;
-  color:var(--gold);
-}
-
-.hero h1{
-  margin:0;
-  font-size:clamp(3.4rem, 8vw, 7rem);
-  line-height:.9;
-  letter-spacing:-3px;
-}
-
-.hero p{
-  font-size:1.25rem;
-  line-height:1.65;
-  margin:24px 0 30px;
-  max-width:620px;
-}
-
-.button-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 22px;
-  border-radius:999px;
-  text-decoration:none;
-  font-weight:800;
-  font-size:.95rem;
-}
-
-.btn-primary{
-  background:var(--gold);
-  color:#111;
-}
-
-.btn-secondary{
-  background:white;
-  color:var(--blue);
-}
-
-.btn-outline{
-  border:2px solid white;
-  color:white;
-}
-
-/* SECTIONS */
-section{
-  padding:76px 6%;
-}
-
-.container{
-  max-width:1180px;
-  margin:auto;
-}
-
-.center{
-  text-align:center;
-}
-
-.kicker{
-  color:var(--blue);
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:.78rem;
-}
-
-h2{
-  font-size:clamp(2rem, 4vw, 3.2rem);
-  margin:12px 0 18px;
-  line-height:1.05;
-}
-
-.lead{
-  font-size:1.16rem;
-  line-height:1.75;
-  max-width:820px;
-  margin:0 auto;
-}
-
-/* INTRO */
-.intro{
-  background:white;
-}
-
-/* FEATURE CARDS */
-.features{
-  background:var(--light);
-}
-
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:26px;
-  margin-top:42px;
-}
-
-.card{
-  background:white;
-  border-radius:26px;
-  overflow:hidden;
-  box-shadow:0 18px 45px rgba(16,24,40,.1);
-}
-
-.card img{
-  width:100%;
-  height:230px;
-  object-fit:cover;
-  display:block;
-}
-
-.card-body{
-  padding:28px;
-}
-
-.card h3{
-  margin:0 0 12px;
-  color:var(--blue);
-  font-size:1.5rem;
-}
-
-.card p{
-  margin:0 0 22px;
-  line-height:1.65;
-}
-
-/* SPLIT */
-.split{
-  background:white;
-}
-
-.split-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:50px;
-  align-items:center;
-}
-
-.split img{
-  width:100%;
-  border-radius:30px;
-  box-shadow:0 22px 55px rgba(16,24,40,.18);
-}
-
-.check-list{
-  padding:0;
-  margin:24px 0 0;
-  list-style:none;
-}
-
-.check-list li{
-  margin:12px 0;
-  padding-left:30px;
-  position:relative;
-  line-height:1.6;
-}
-
-.check-list li:before{
-  content:"✓";
-  position:absolute;
-  left:0;
-  top:0;
-  color:var(--blue);
-  font-weight:900;
-}
-
-/* GALLERY */
-.gallery{
-  background:#eef3ff;
-}
-
-.photo-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:40px;
-}
-
-.photo-grid img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  border-radius:18px;
-}
-
-/* CTA */
-.cta-section{
-  background:white;
-}
-
-.cta{
-  background:
-    linear-gradient(135deg, var(--blue), var(--blue-dark));
-  color:white;
-  border-radius:34px;
-  padding:58px;
-  text-align:center;
-  box-shadow:0 24px 60px rgba(47,99,199,.28);
-}
-
-.cta p{
-  max-width:720px;
-  margin:0 auto 26px;
-  line-height:1.7;
-  font-size:1.12rem;
-}
-
-/* FOOTER */
-footer{
-  background:#2f2f2f;
-  color:white;
-  text-align:center;
-  padding:38px 6%;
-  font-size:.95rem;
-}
-
-footer strong{
-  display:block;
-  margin-bottom:8px;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .nav-wrap{
-    display:block;
-    text-align:center;
-  }
-
-  .logo{
-    justify-content:center;
-    margin-bottom:10px;
-  }
-
-  .nav-links{
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-
-  .hero{
-    text-align:center;
-    background:
-      linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.78)),
-      url("media/ukwf-building.png");
-    background-size:cover;
-    background-position:center;
-  }
-
-  .hero-content{
-    margin:auto;
-  }
-
-  .button-row{
-    justify-content:center;
-  }
-
-  .card-grid,
-  .split-grid{
-    grid-template-columns:1fr;
-  }
-
-  .photo-grid{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:560px){
-  .nav-links a{
-    font-size:.82rem;
-  }
-
-  .hero{
-    min-height:82vh;
-    padding-top:150px;
-  }
-
-  .hero h1{
-    letter-spacing:-1px;
-  }
-
-  .card-grid,
-  .photo-grid{
-    grid-template-columns:1fr;
-  }
-
-  .cta{
-    padding:36px 24px;
-  }
-}
-</style>
+      .card-body {
+        padding: 26px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <main class="page">
+    <section class="notice" aria-label="Announcement">
+      Job Opportunity at The Wesley!
+      <a href="job-opportunities.html">Learn More</a>
+    </section>
 
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="logo" href="/">
-      <span class="logo-mark">UK</span>
-      <span>The Wesley at UK</span>
-    </a>
-
-    <nav class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about-us/our-mission">About</a>
-      <a href="/housing/dorm">Housing</a>
-      <a href="/get-involved/ministry">Get Involved</a>
-      <a href="/events">Events</a>
-      <a class="nav-cta" href="/housing/apply">Apply</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-  <section class="hero">
-    <div class="hero-inner">
+    <section class="hero">
       <div class="hero-content">
-        <div class="eyebrow">Welcome to</div>
-        <h1>THE WESLEY</h1>
-        <p>
-          A place to seek God together at the University of Kentucky — a campus ministry
-          and Christian living community for students who want to grow in faith,
-          friendship, and purpose.
-        </p>
-
-        <div class="button-row">
-          <a class="btn btn-primary" href="/housing/apply">Apply for Housing</a>
-          <a class="btn btn-secondary" href="/get-involved/ministry">Get Involved</a>
-          <a class="btn btn-outline" href="/about-us/contact-us">Visit Us</a>
-        </div>
+        <img class="hero-logo" src="https://lh3.googleusercontent.com/sitesv/AA5AbUDl8RwhLaR8Bfm3dwUzCRgczn6wV8XxpdoLZbY6SHpbh2b774WpOh7azFADICPsxU14KC0YFYR3tdMlHN49cM4HVwQPkhM1gxLnaFE63bPy_55A9d7lrndJ-F5pLmEUBWFXp63f7dy-QHdv8Mdv0V5wp0VDfo5b71LcERj34e7ScQ2hTmKjTVjV=w16383" alt="The Wesley at UK logo">
+        <p class="eyebrow">Welcome to</p>
+        <h1>The Wesley</h1>
+        <p class="subtitle">A Place to Seek God Together</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="intro">
-    <div class="container center">
-      <div class="kicker">Campus Ministry + Christian Housing</div>
-      <h2>A Place to Seek God Together</h2>
-      <p class="lead">
+    <section class="intro">
+      <p>
         We are a community of people trying to follow Jesus on our campus, in our city,
-        and around the world. The Wesley is UK’s Christian ministry with a residential
-        community — a place to live, worship, pray, serve, and belong.
+        and around the world. We are UK’s only Christian ministry that has a residential
+        ministry, meaning that we are both a campus ministry and a Christian living community.
       </p>
-    </div>
-  </section>
+    </section>
 
-  <section class="features">
-    <div class="container center">
-      <div class="kicker">Find Your Place</div>
-      <h2>Live, Grow, and Serve</h2>
-
-      <div class="card-grid">
+    <section class="cards-section">
+      <div class="cards">
         <article class="card">
-          <img src="media/ukwf-living.png" alt="Students gathering in a living space">
+          <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUC1-8ITGf26Euc_rxBumFyfcE8RsI2DhIL1szbh8Y1tepL9DT6uPhQs1oszowNpW_V-J3HReGseFo4iX6MVGEI9mG62E02WXOnLivrtzBfX7pZZB6t1jICXcC5aLx-BF6xtmqcGx6phUgKKID-nl29PRDp7DXtTJKjDaaya-b5ShCas5eK23BS1aXDKS6xEZje4Z_NQj7kQB2rHY7awkTS7RoYqugIB4u3xTHg=w1280" alt="Students gathered in ministry">
           <div class="card-body">
-            <h3>Housing</h3>
-            <p>
-              Live near campus in a Christ-centered residential community built around
-              friendship, accountability, and belonging.
-            </p>
-            <a class="btn btn-primary" href="/housing/dorm">Explore Housing</a>
+            <h2>Ministry</h2>
+            <p>Learn about our ministry, weekly programs, or ways to support God’s work.</p>
+            <a class="btn" href="get-involved/ministry.html">Learn More</a>
           </div>
         </article>
 
         <article class="card">
-          <img src="media/ukwf-worship.png" alt="Worship gathering at Wesley">
+          <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAH1VqPF_hOZfZUhKqQ6_HuobVXoUhWrlYhqPlNaxcM8Khi9v6f8_4RuodSWh9PqhR5p3CMdji8w5PBgGT9jwuKQVQG5LTI1SqdFJvuZnQ7Tm9nqSNLfy2g9vserve4zqIv9cIx9QF6bcKglj8exdHYWApWcfw8kFh0cANeHdaqDjjh2Tzc5Ntjr5fmWmgnIvcjUX9mUJ-qIXyeFmcsc57rDOHqgvoo4NwkzPE=w1280" alt="The Wesley dorm and residential ministry">
           <div class="card-body">
-            <h3>Ministry</h3>
-            <p>
-              Join weekly worship, discipleship, prayer, and conversations that help
-              students follow Jesus in everyday life.
-            </p>
-            <a class="btn btn-primary" href="/get-involved/ministry">Learn More</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="media/ukwf-leadership.png" alt="Students serving and leading">
-          <div class="card-body">
-            <h3>Leadership</h3>
-            <p>
-              Discover ways to serve, lead, and grow as part of what God is doing on
-              campus and throughout Lexington.
-            </p>
-            <a class="btn btn-primary" href="/get-involved/leadership-academy">Get Started</a>
+            <h2>Dorm</h2>
+            <p>Need a place to stay during your college journey? Come join us at our off-campus, next-to-campus dorm!</p>
+            <a class="btn" href="housing/apply.html">Find Out How</a>
           </div>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="split">
-    <div class="container split-grid">
-      <div>
-        <div class="kicker">Why Wesley?</div>
-        <h2>More Than a Building</h2>
-        <p class="lead" style="margin:0;">
-          Wesley is a home base for students — a place to ask honest questions,
-          build real friendships, and discover what it means to follow Jesus during
-          college and beyond.
-        </p>
-
-        <ul class="check-list">
-          <li>Christian community close to the University of Kentucky campus</li>
-          <li>Weekly ministry opportunities for worship, prayer, and discipleship</li>
-          <li>Housing designed around belonging, faith, and shared life</li>
-          <li>Opportunities to serve on campus, in the city, and beyond</li>
-        </ul>
-      </div>
-
-      <img src="media/ukwf-basement.png" alt="Students gathered at Wesley">
-    </div>
-  </section>
-
-  <section class="gallery">
-    <div class="container center">
-      <div class="kicker">Life at Wesley</div>
-      <h2>Community You Can See</h2>
-      <p class="lead">
-        From worship nights to shared meals, prayer, study, and everyday life,
-        Wesley is a place where students can connect and grow.
-      </p>
-
-      <div class="photo-grid">
-        <img src="media/ukwf-3.png" alt="Wesley community photo">
-        <img src="media/ukwf-5.png" alt="Wesley students gathered">
-        <img src="media/ukwf-7.png" alt="Wesley student event">
-        <img src="media/ukwf-8.png" alt="Wesley community life">
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta">
-        <h2>Find Your Place at Wesley</h2>
-        <p>
-          Whether you are looking for housing, community, worship, prayer, or a place
-          to serve, there is room for you here.
-        </p>
-
-        <div class="button-row" style="justify-content:center;">
-          <a class="btn btn-primary" href="/housing/apply">Apply for Housing</a>
-          <a class="btn btn-secondary" href="/about-us/contact-us">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <strong>The Wesley at the University of Kentucky</strong>
-  508 Columbia Ave | Lexington, KY 40508<br>
-  ukwesley@gmail.com
-</footer>
-
+    <footer class="footer">
+      <h2>The Wesley at The University of Kentucky</h2>
+      <p>508 Columbia Ave | Lexington, KY 40508</p>
+      <p><a href="tel:18592540231">(859) 254-0231</a></p>
+      <p><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></p>
+    </footer>
+  </main>
 </body>
 </html>
