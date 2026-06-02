@@ -4,297 +4,124 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Wesley at UK</title>
-  <meta name="description" content="The Wesley at UK is a Christian campus ministry and residential ministry at the University of Kentucky in Lexington, Kentucky." />
-
+  <meta name="description" content="The Wesley at UK is a campus ministry and Christian residential community at the University of Kentucky." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --wesley-blue: #3967c3;
-      --dark: #212121;
-      --light: #ffffff;
-      --soft: #f4f6fb;
-      --muted: #666;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Bitter", Georgia, serif;
-      color: var(--dark);
-      background: #fff;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .notice {
-      background: #ffffff;
-      border-bottom: 1px solid #e7e7e7;
-      padding: 14px 20px;
-      text-align: center;
-      font-family: "Montserrat", Arial, sans-serif;
-      font-weight: 700;
-    }
-
-    .notice a {
-      display: inline-block;
-      margin-left: 12px;
-      padding: 7px 14px;
-      border: 1px solid #111;
-      border-radius: 999px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: all .2s ease;
-    }
-
-    .notice a:hover {
-      background: #111;
-      color: #fff;
-    }
-
-    .hero {
-      min-height: 560px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 80px 22px;
-      position: relative;
-      background:
-        linear-gradient(rgba(25, 25, 25, 0.58), rgba(25, 25, 25, 0.58)),
-        url("https://lh3.googleusercontent.com/sitesv/AA5AbUCS-ol1l_HjW975axTIaHJXBphFUenUCuwBb8Hsb9V_iRtuuajnNc4oY34EkyFF3YvlxnQKtlpWQJ0TubZXIEYTnv8-GmYXY4rtMblm4R0ehiCL2k4rzdXAaO0kaBy6Zg8H8dYis1YLg0YAkQBMVYTIdA8_j6MISY5UEaBiW3VtJ1giCmk4sPE8Veg=w16383") center/cover no-repeat;
-    }
-
-    .hero-content {
-      max-width: 920px;
-    }
-
-    .hero-logo {
-      width: min(220px, 55vw);
-      margin: 0 auto 24px;
-      display: block;
-      filter: drop-shadow(0 8px 22px rgba(0,0,0,.35));
-    }
-
-    .eyebrow {
-      font-family: "Montserrat", Arial, sans-serif;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-      margin: 0 0 4px;
-    }
-
-    h1 {
-      font-family: "Montserrat", Arial, sans-serif;
-      font-size: clamp(3.25rem, 8vw, 6.2rem);
-      line-height: .95;
-      margin: 0;
-      font-weight: 800;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-
-    .subtitle {
-      font-size: clamp(1.35rem, 3vw, 2rem);
-      margin: 24px auto 0;
-      font-weight: 700;
-    }
-
-    .intro {
-      padding: 70px 22px;
-      text-align: center;
-      background: #fff;
-    }
-
-    .intro p {
-      max-width: 900px;
-      margin: 0 auto;
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-    }
-
-    .cards-section {
-      background: var(--soft);
-      padding: 70px 22px;
-    }
-
-    .cards {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0,0,0,.10);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-body {
-      padding: 34px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card h2 {
-      font-family: "Montserrat", Arial, sans-serif;
-      color: var(--wesley-blue);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1;
-      margin: 0 0 18px;
-      text-transform: uppercase;
-      letter-spacing: .02em;
-    }
-
-    .card p {
-      font-size: 1.08rem;
-      margin: 0 0 28px;
-    }
-
-    .btn {
-      margin-top: auto;
-      align-self: flex-start;
-      display: inline-block;
-      background: var(--wesley-blue);
-      color: #fff;
-      text-decoration: none;
-      font-family: "Montserrat", Arial, sans-serif;
-      font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 999px;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(57,103,195,.25);
-    }
-
-    .footer {
-      background: #3a3a3a;
-      color: #fff;
-      text-align: center;
-      padding: 48px 22px;
-    }
-
-    .footer h2 {
-      font-family: "Montserrat", Arial, sans-serif;
-      margin: 0 0 12px;
-      font-size: 1.55rem;
-    }
-
-    .footer p {
-      margin: 5px 0;
-      font-size: 1rem;
-    }
-
-    .footer a {
-      color: #fff;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    @media (max-width: 760px) {
-      .notice a {
-        display: table;
-        margin: 10px auto 0;
-      }
-
-      .hero {
-        min-height: 470px;
-        padding: 60px 18px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .card-body {
-        padding: 26px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <main class="page">
-    <section class="notice" aria-label="Announcement">
-      Job Opportunity at The Wesley!
+  <header class="site-header">
+    <div class="announcement">
+      <span>Job Opportunity at the Wesley!</span>
       <a href="job-opportunities.html">Learn More</a>
-    </section>
+    </div>
 
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <img src="media/uploads/uk-wesley-logo.png" alt="" />
+        <span>The Wesley at UK</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+        <span></span><span></span><span></span>
+        <strong>Menu</strong>
+      </button>
+
+      <ul id="main-menu" class="main-menu">
+        <li><a class="active" href="index.html">Home</a></li>
+
+        <li class="has-submenu">
+          <button>About Us</button>
+          <ul>
+            <li><a href="our-mission.html">Our Mission</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button>Housing</button>
+          <ul>
+            <li><a href="dorm.html">Dorm</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="apply.html">Apply</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button>Get Involved</button>
+          <ul>
+            <li><a href="ministry.html">Ministry</a></li>
+            <li><a href="weekly-programs.html">Weekly Programs</a></li>
+            <li><a href="leadership-academy.html">Leadership Academy</a></li>
+            <li><a href="prayer.html">Prayer</a></li>
+          </ul>
+        </li>
+
+        <li><a href="events.html">Events</a></li>
+
+        <li class="has-submenu">
+          <button>Support Our Mission</button>
+          <ul>
+            <li><a href="support-gods-work.html">Support God's Work</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </li>
+
+        <li><a href="job-opportunities.html">Job Opportunities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
     <section class="hero">
+      <div class="hero-overlay"></div>
       <div class="hero-content">
-        <img class="hero-logo" src="https://lh3.googleusercontent.com/sitesv/AA5AbUDl8RwhLaR8Bfm3dwUzCRgczn6wV8XxpdoLZbY6SHpbh2b774WpOh7azFADICPsxU14KC0YFYR3tdMlHN49cM4HVwQPkhM1gxLnaFE63bPy_55A9d7lrndJ-F5pLmEUBWFXp63f7dy-QHdv8Mdv0V5wp0VDfo5b71LcERj34e7ScQ2hTmKjTVjV=w16383" alt="The Wesley at UK logo">
-        <p class="eyebrow">Welcome to</p>
+        <p>Welcome to</p>
         <h1>The Wesley</h1>
-        <p class="subtitle">A Place to Seek God Together</p>
       </div>
     </section>
 
     <section class="intro">
-      <p>
-        We are a community of people trying to follow Jesus on our campus, in our city,
-        and around the world. We are UK’s only Christian ministry that has a residential
-        ministry, meaning that we are both a campus ministry and a Christian living community.
-      </p>
+      <div class="container narrow">
+        <h2>A Place to Seek God Together</h2>
+        <p>
+          We are a community of people trying to follow Jesus on our campus, in our city, and around the world.
+          We are UK’s only Christian ministry that has a residential ministry, meaning that we are both a campus
+          ministry and a Christian living community.
+        </p>
+      </div>
     </section>
 
     <section class="cards-section">
-      <div class="cards">
-        <article class="card">
-          <img src="media/uploads/ukwf-worship.png" alt="Students gathered in ministry">
+      <div class="container card-grid">
+        <article class="feature-card">
+          <img src="media/uploads/ukwf-worship.png" alt="Students worshiping together at The Wesley" />
           <div class="card-body">
             <h2>Ministry</h2>
             <p>Learn about our ministry, weekly programs, or ways to support God’s work.</p>
-            <a class="btn" href="get-involved/ministry.html">Learn More</a>
+            <a class="button" href="ministry.html">Learn More</a>
           </div>
         </article>
 
-        <article class="card">
-          <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAH1VqPF_hOZfZUhKqQ6_HuobVXoUhWrlYhqPlNaxcM8Khi9v6f8_4RuodSWh9PqhR5p3CMdji8w5PBgGT9jwuKQVQG5LTI1SqdFJvuZnQ7Tm9nqSNLfy2g9vserve4zqIv9cIx9QF6bcKglj8exdHYWApWcfw8kFh0cANeHdaqDjjh2Tzc5Ntjr5fmWmgnIvcjUX9mUJ-qIXyeFmcsc57rDOHqgvoo4NwkzPE=w1280" alt="The Wesley dorm and residential ministry">
+        <article class="feature-card">
+          <img src="media/uploads/ukwf-dorm.png" alt="Students gathered in the dorm community space" />
           <div class="card-body">
             <h2>Dorm</h2>
             <p>Need a place to stay during your college journey? Come join us at our off-campus, next-to-campus dorm!</p>
-            <a class="btn" href="housing/apply.html">Find Out How</a>
+            <a class="button" href="dorm.html">Find Out How</a>
           </div>
         </article>
       </div>
     </section>
-
-    <footer class="footer">
-      <h2>The Wesley at The University of Kentucky</h2>
-      <p>508 Columbia Ave | Lexington, KY 40508</p>
-      <p><a href="tel:18592540231">(859) 254-0231</a></p>
-      <p><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></p>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <strong>The Wesley at The University of Kentucky</strong>
+    <span>508 Columbia Ave | Lexington, KY 40508</span>
+    <span>(859) 254-0231</span>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
