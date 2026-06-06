@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dorm | The Wesley at UK</title>
+  <meta name="description" content="Learn about the Wesley residential community and dorm at the University of Kentucky.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #3867c8;
+      --blue-dark: #244b9c;
+      --ink: #171717;
+      --muted: #555555;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --footer: #303030;
+      --shadow: 0 18px 45px rgba(0,0,0,.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Bitter", Georgia, serif;
+      background: var(--white);
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.16);
+    }
+
+    .navbar {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 24px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .menu-lines {
+      display: grid;
+      gap: 5px;
+    }
+
+    .menu-lines span {
+      width: 24px;
+      height: 2px;
+      display: block;
+      background: var(--white);
+    }
+
+    .main-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .main-menu > li {
+      position: relative;
+    }
+
+    .main-menu a,
+    .main-menu button {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main-menu a:hover,
+    .main-menu button:hover,
+    .main-menu .active {
+      background: rgba(255,255,255,.14);
+    }
+
+    .has-submenu > button::after {
+      content: "⌄";
+      margin-left: 7px;
+      font-size: 13px;
+    }
+
+    .has-submenu ul {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 235px;
+      padding: 8px 0;
+      margin: 0;
+      list-style: none;
+      background: var(--blue-dark);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: .18s ease;
+    }
+
+    .has-submenu:hover ul,
+    .has-submenu:focus-within ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .has-submenu ul a {
+      min-height: auto;
+      padding: 12px 18px;
+      justify-content: flex-start;
+    }
+
+    .page-hero {
+      min-height: clamp(300px, 36vw, 460px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+        url("PASTE-HERO-IMAGE-URL-HERE");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 1;
+      letter-spacing: -.03em;
+      text-shadow: 0 3px 18px rgba(0,0,0,.35);
+    }
+
+    .intro-section {
+      padding: clamp(48px, 7vw, 82px) 0;
+      background: var(--light);
+    }
+
+    .intro-card {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 52px);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .intro-card h2 {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    .intro-card p {
+      margin: 0 0 18px;
+      color: #272727;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.65;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--white);
+      border: 2px solid var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: .03em;
+    }
+
+    .btn:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    .rooms-section {
+      padding: clamp(52px, 8vw, 96px) 0;
+      background: var(--white);
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: clamp(32px, 5vw, 54px);
+    }
+
+    .section-heading h2 {
+      margin: 0 0 12px;
+      font-family: "Montserrat", Arial, sans-serif;
+      color: var(--blue);
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+
+    .section-heading p {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(26px, 4vw, 42px);
+    }
+
+    .room-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .room-card img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .room-body {
+      padding: clamp(22px, 3vw, 32px);
+    }
+
+    .room-body h3 {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.12;
+    }
+
+    .room-body p {
+      margin: 0;
+      color: #2a2a2a;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .cta-section {
+      padding: clamp(48px, 7vw, 84px) 0;
+      background: var(--blue);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      margin: 0 0 16px;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+    }
+
+    .cta-section p {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto 26px;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.6;
+    }
+
+    .btn-light {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--blue-dark);
+    }
+
+    .site-footer {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+      padding: 44px 16px;
+      background: var(--footer);
+      color: var(--white);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .site-footer a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1060px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 0 16px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0 18px;
+      }
+
+      .main-menu.open {
+        display: flex;
+      }
+
+      .main-menu > li {
+        width: 100%;
+      }
+
+      .main-menu a,
+      .main-menu button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+
+      .has-submenu ul {
+        position: static;
+        min-width: auto;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0,0,0,.16);
+      }
+
+      .has-submenu.open ul {
+        display: block;
+      }
+
+      .has-submenu:hover ul {
+        display: none;
+      }
+
+      .has-submenu.open:hover ul {
+        display: block;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .brand {
+        font-size: 17px;
+      }
+
+      .page-hero {
+        min-height: 300px;
+      }
+
+      .room-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-card {
+        width: min(100% - 24px, 920px);
+        text-align: left;
+      }
+
+      .button-row {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">UKW</span>
+        <span>The Wesley at UK</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        Menu
+      </button>
+
+      <ul id="main-menu" class="main-menu">
+        <li><a href="index.html">Home</a></li>
+
+        <li class="has-submenu">
+          <button type="button">About Us</button>
+          <ul>
+            <li><a href="our-mission.html">Our Mission</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button type="button" class="active">Housing</button>
+          <ul>
+            <li><a class="active" href="dorm.html">Dorm</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="apply.html">Apply</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button type="button">Get Involved</button>
+          <ul>
+            <li><a href="ministry.html">Ministry</a></li>
+            <li><a href="weekly-programs.html">Weekly Programs</a></li>
+            <li><a href="leadership-academy.html">Leadership Academy</a></li>
+            <li><a href="prayer.html">Prayer</a></li>
+          </ul>
+        </li>
+
+        <li><a href="events.html">Events</a></li>
+
+        <li class="has-submenu">
+          <button type="button">Support Our Mission</button>
+          <ul>
+            <li><a href="support-gods-work.html">Support God's Work</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </li>
+
+        <li><a href="Jobs.html">Job Opportunities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>Our Dorm</h1>
+    </section>
+
+    <section class="intro-section">
+      <article class="intro-card">
+        <h2>A Place to Live and Thrive</h2>
+        <p>
+          The Wesley Foundation has a dorm where students choose to live in Christian community.
+          It is not a classic college experience where community centers and activities drive religion.
+          At Wesley, following a Christ-like college experience is at the heart of all that we do.
+        </p>
+        <p>
+          Our building is close to campus, offers shared spaces for study and fun, and gives students a place
+          to grow spiritually while building meaningful friendships.
+        </p>
+        <div class="button-row">
+          <a class="btn" href="apply.html">Apply Online</a>
+          <a class="btn" href="location.html">View Location</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="rooms-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Life at The Wesley</h2>
+          <p>
+            From shared meals to late-night conversations, our spaces help students build community and feel at home.
+          </p>
+        </div>
+
+        <div class="room-grid">
+          <article class="room-card">
+            <img src="PASTE-FAMILY-ROOM-IMAGE-URL-HERE" alt="Family room at The Wesley dorm">
+            <div class="room-body">
+              <h3>Family Room</h3>
+              <p>
+                A welcoming space where students gather for conversation, relaxing, and shared community life.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-KITCHEN-IMAGE-URL-HERE" alt="Kitchen at The Wesley dorm">
+            <div class="room-body">
+              <h3>Kitchen</h3>
+              <p>
+                A shared kitchen gives students space to cook, eat together, and enjoy the rhythm of everyday life.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-DINING-ROOM-IMAGE-URL-HERE" alt="Dining room at The Wesley dorm">
+            <div class="room-body">
+              <h3>Dining Room</h3>
+              <p>
+                Meals and table fellowship help students connect, laugh, pray, and grow together as a community.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-BATHROOMS-IMAGE-URL-HERE" alt="Bathrooms at The Wesley dorm">
+            <div class="room-body">
+              <h3>Bathrooms</h3>
+              <p>
+                Residential spaces are designed to support daily life with practical shared facilities for students.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-GAME-ROOM-IMAGE-URL-HERE" alt="Game room at The Wesley dorm">
+            <div class="room-body">
+              <h3>Game Room</h3>
+              <p>
+                A space for fun, rest, games, and relaxed community away from the pressure of classes and schedules.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-BASEMENT-IMAGE-URL-HERE" alt="Basement gathering space at The Wesley dorm">
+            <div class="room-body">
+              <h3>Basement</h3>
+              <p>
+                A flexible gathering area for students to hang out, watch movies, meet, and build friendships.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-OUTDOOR-SPACES-IMAGE-URL-HERE" alt="Outdoor spaces near The Wesley dorm">
+            <div class="room-body">
+              <h3>Outdoor Spaces</h3>
+              <p>
+                Outdoor areas provide space for events, cookouts, relaxation, and connecting with others.
+              </p>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="PASTE-ROOF-IMAGE-URL-HERE" alt="Roof space at The Wesley dorm">
+            <div class="room-body">
+              <h3>The Roof</h3>
+              <p>
+                A unique community space for gathering, conversation, and enjoying time together near campus.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Interested in Living at The Wesley?</h2>
+      <p>
+        Take the next step and learn more about joining our Christian residential community near the University of Kentucky.
+      </p>
+      <a class="btn btn-light" href="apply.html">Apply Online</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong>The Wesley at The University of Kentucky</strong>
+    <span>508 Columbia Ave | Lexington, KY 40508</span>
+    <span>(859) 254-0231</span>
+    <span><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></span>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainMenu = document.querySelector("#main-menu");
+    const submenuButtons = document.querySelectorAll(".has-submenu > button");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    submenuButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 1060) {
+          const parent = button.closest(".has-submenu");
+          parent.classList.toggle("open");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
