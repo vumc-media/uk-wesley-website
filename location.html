@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Location | The Wesley at UK</title>
+  <meta name="description" content="Find The Wesley at the University of Kentucky, located at 508 Columbia Ave in Lexington, Kentucky.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #3867c8;
+      --blue-dark: #244b9c;
+      --ink: #171717;
+      --muted: #555555;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --footer: #303030;
+      --shadow: 0 18px 45px rgba(0,0,0,.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Bitter", Georgia, serif;
+      background: var(--white);
+    }
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.16);
+    }
+
+    .navbar {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 24px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .menu-lines {
+      display: grid;
+      gap: 5px;
+    }
+
+    .menu-lines span {
+      width: 24px;
+      height: 2px;
+      display: block;
+      background: var(--white);
+    }
+
+    .main-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .main-menu > li {
+      position: relative;
+    }
+
+    .main-menu a,
+    .main-menu button {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main-menu a:hover,
+    .main-menu button:hover,
+    .main-menu .active {
+      background: rgba(255,255,255,.14);
+    }
+
+    .has-submenu > button::after {
+      content: "⌄";
+      margin-left: 7px;
+      font-size: 13px;
+    }
+
+    .has-submenu ul {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 235px;
+      padding: 8px 0;
+      margin: 0;
+      list-style: none;
+      background: var(--blue-dark);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: .18s ease;
+    }
+
+    .has-submenu:hover ul,
+    .has-submenu:focus-within ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .has-submenu ul a {
+      min-height: auto;
+      padding: 12px 18px;
+      justify-content: flex-start;
+    }
+
+    .page-hero {
+      min-height: clamp(320px, 42vw, 520px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(0,0,0,.36), rgba(0,0,0,.36)),
+        url("PASTE-HERO-IMAGE-URL-HERE");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      width: min(900px, calc(100% - 32px));
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      text-shadow: 0 3px 18px rgba(0,0,0,.35);
+    }
+
+    .page-hero p {
+      max-width: 760px;
+      margin: 20px auto 0;
+      font-size: clamp(18px, 2.4vw, 26px);
+      line-height: 1.45;
+      text-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+
+    .location-section {
+      padding: clamp(52px, 7vw, 92px) 0;
+      background: var(--light);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.2fr);
+      gap: clamp(28px, 5vw, 60px);
+      align-items: stretch;
+    }
+
+    .info-card,
+    .map-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .info-card {
+      padding: clamp(28px, 5vw, 46px);
+    }
+
+    .info-card h2 {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+
+    .address-block {
+      display: grid;
+      gap: 10px;
+      margin: 26px 0;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.5;
+    }
+
+    .address-block a {
+      color: var(--blue-dark);
+      font-weight: 700;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--white);
+      border: 2px solid var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: .03em;
+    }
+
+    .btn:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--blue);
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      display: block;
+      border: 0;
+    }
+
+    .why-section {
+      padding: clamp(52px, 7vw, 88px) 0;
+      background: var(--white);
+      text-align: center;
+    }
+
+    .why-section h2 {
+      margin: 0 0 18px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+
+    .why-section p {
+      width: min(850px, calc(100% - 32px));
+      margin: 0 auto;
+      color: #2a2a2a;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.65;
+    }
+
+    .photo-section {
+      padding: clamp(52px, 7vw, 88px) 0;
+      background: var(--light);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(22px, 3vw, 34px);
+    }
+
+    .photo-card {
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      aspect-ratio: 16 / 11;
+      object-fit: cover;
+    }
+
+    .photo-card div {
+      padding: 24px;
+    }
+
+    .photo-card h3 {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 24px;
+      line-height: 1.12;
+    }
+
+    .photo-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .site-footer {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+      padding: 44px 16px;
+      background: var(--footer);
+      color: var(--white);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .site-footer a {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1060px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 0 16px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0 18px;
+      }
+
+      .main-menu.open {
+        display: flex;
+      }
+
+      .main-menu > li {
+        width: 100%;
+      }
+
+      .main-menu a,
+      .main-menu button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+
+      .has-submenu ul {
+        position: static;
+        min-width: auto;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0,0,0,.16);
+      }
+
+      .has-submenu.open ul {
+        display: block;
+      }
+
+      .has-submenu:hover ul {
+        display: none;
+      }
+
+      .has-submenu.open:hover ul {
+        display: block;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .map-card iframe {
+        min-height: 360px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .brand {
+        font-size: 17px;
+      }
+
+      .page-hero {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">UKW</span>
+        <span>The Wesley at UK</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        Menu
+      </button>
+
+      <ul id="main-menu" class="main-menu">
+        <li><a href="index.html">Home</a></li>
+
+        <li class="has-submenu">
+          <button type="button">About Us</button>
+          <ul>
+            <li><a href="our-mission.html">Our Mission</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button type="button" class="active">Housing</button>
+          <ul>
+            <li><a href="dorm.html">Dorm</a></li>
+            <li><a class="active" href="location.html">Location</a></li>
+            <li><a href="apply.html">Apply</a></li>
+          </ul>
+        </li>
+
+        <li class="has-submenu">
+          <button type="button">Get Involved</button>
+          <ul>
+            <li><a href="ministry.html">Ministry</a></li>
+            <li><a href="weekly-programs.html">Weekly Programs</a></li>
+            <li><a href="leadership-academy.html">Leadership Academy</a></li>
+            <li><a href="prayer.html">Prayer</a></li>
+          </ul>
+        </li>
+
+        <li><a href="events.html">Events</a></li>
+
+        <li class="has-submenu">
+          <button type="button">Support Our Mission</button>
+          <ul>
+            <li><a href="support-gods-work.html">Support God's Work</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </li>
+
+        <li><a href="Jobs.html">Job Opportunities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="hero-content">
+        <h1>Location</h1>
+        <p>Just steps from the University of Kentucky campus.</p>
+      </div>
+    </section>
+
+    <section class="location-section">
+      <div class="container location-grid">
+        <article class="info-card">
+          <h2>The Wesley at UK</h2>
+
+          <div class="address-block">
+            <strong>The Wesley at The University of Kentucky</strong>
+            <span>508 Columbia Ave</span>
+            <span>Lexington, KY 40508</span>
+            <a href="tel:18592540231">(859) 254-0231</a>
+            <a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a>
+          </div>
+
+          <div class="button-grid">
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=508+Columbia+Ave+Lexington+KY+40508">Get Directions</a>
+            <a class="btn btn-outline" href="tel:18592540231">Call Us</a>
+            <a class="btn btn-outline" href="mailto:ukwesley@gmail.com">Email Us</a>
+            <a class="btn btn-outline" href="apply.html">Apply Online</a>
+          </div>
+        </article>
+
+        <div class="map-card">
+          <iframe
+            title="Map to The Wesley at UK"
+            loading="lazy"
+            allowfullscreen
+            src="https://www.google.com/maps?q=508%20Columbia%20Ave%2C%20Lexington%2C%20KY%2040508&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-section">
+      <h2>Close to Campus. Rooted in Community.</h2>
+      <p>
+        Located near the University of Kentucky, The Wesley gives students convenient access to campus while offering
+        a Christ-centered community where they can grow in faith, friendship, and leadership.
+      </p>
+    </section>
+
+    <section class="photo-section">
+      <div class="container photo-grid">
+        <article class="photo-card">
+          <img src="PASTE-CAMPUS-IMAGE-1-URL-HERE" alt="Near campus">
+          <div>
+            <h3>Near Campus</h3>
+            <p>Stay close to classes, campus life, and the rhythm of student life at UK.</p>
+          </div>
+        </article>
+
+        <article class="photo-card">
+          <img src="PASTE-CAMPUS-IMAGE-2-URL-HERE" alt="Student housing">
+          <div>
+            <h3>Student Housing</h3>
+            <p>Live in a supportive Christian residential community during your college journey.</p>
+          </div>
+        </article>
+
+        <article class="photo-card">
+          <img src="PASTE-CAMPUS-IMAGE-3-URL-HERE" alt="Community life">
+          <div>
+            <h3>Community Life</h3>
+            <p>Build friendships, share meals, worship, study, and grow with others.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong>The Wesley at The University of Kentucky</strong>
+    <span>508 Columbia Ave | Lexington, KY 40508</span>
+    <span>(859) 254-0231</span>
+    <span><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></span>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainMenu = document.querySelector("#main-menu");
+    const submenuButtons = document.querySelectorAll(".has-submenu > button");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    submenuButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 1060) {
+          const parent = button.closest(".has-submenu");
+          parent.classList.toggle("open");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
