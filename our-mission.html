@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Mission | The Wesley at UK</title>
+  <meta name="description" content="The mission of The Wesley Foundation at the University of Kentucky.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #3867c8;
+      --blue-dark: #244b9c;
+      --ink: #171717;
+      --muted: #555555;
+      --light: #f4f6f9;
+      --white: #ffffff;
+      --footer: #303030;
+      --shadow: 0 18px 45px rgba(0,0,0,.12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Bitter", Georgia, serif;
+      background: var(--white);
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.16);
+    }
+
+    .navbar {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 24px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .menu-lines { display: grid; gap: 5px; }
+    .menu-lines span { width: 24px; height: 2px; display: block; background: var(--white); }
+
+    .main-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 2px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .main-menu > li { position: relative; }
+
+    .main-menu a,
+    .main-menu button {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 11px;
+      border: 0;
+      background: transparent;
+      color: var(--white);
+      font: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main-menu a:hover,
+    .main-menu button:hover,
+    .main-menu .active {
+      background: rgba(255,255,255,.14);
+    }
+
+    .has-submenu > button::after {
+      content: "⌄";
+      margin-left: 7px;
+      font-size: 13px;
+    }
+
+    .has-submenu ul {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 235px;
+      padding: 8px 0;
+      margin: 0;
+      list-style: none;
+      background: var(--blue-dark);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: .18s ease;
+    }
+
+    .has-submenu:hover ul,
+    .has-submenu:focus-within ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .has-submenu ul a {
+      min-height: auto;
+      padding: 12px 18px;
+      justify-content: flex-start;
+    }
+
+    .page-hero {
+      min-height: clamp(280px, 36vw, 440px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      background:
+        linear-gradient(rgba(0,0,0,.38), rgba(0,0,0,.38)),
+        url("PASTE-HERO-IMAGE-URL-HERE");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      text-transform: lowercase;
+      text-shadow: 0 3px 18px rgba(0,0,0,.35);
+    }
+
+    .mission-section {
+      padding: clamp(52px, 7vw, 90px) 0;
+      background: var(--white);
+    }
+
+    .mission-card {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .mission-intro {
+      margin: 0 0 28px;
+      font-size: clamp(20px, 2.5vw, 27px);
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .mission-list {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 18px;
+      font-size: clamp(19px, 2.2vw, 25px);
+      line-height: 1.4;
+    }
+
+    .mission-list li {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .mission-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .58em;
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      background: var(--blue);
+    }
+
+    .closing-strip {
+      padding: clamp(44px, 6vw, 72px) 0;
+      background: var(--light);
+      text-align: center;
+    }
+
+    .closing-strip h2 {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.1;
+    }
+
+    .closing-strip p {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.6;
+    }
+
+    .site-footer {
+      display: grid;
+      gap: 8px;
+      place-items: center;
+      padding: 44px 16px;
+      background: var(--footer);
+      color: var(--white);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .site-footer a { color: var(--white); font-weight: 700; }
+
+    @media (max-width: 1060px) {
+      .navbar { flex-wrap: wrap; padding: 0 16px; }
+      .menu-toggle { display: inline-flex; }
+      .main-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0 18px;
+      }
+      .main-menu.open { display: flex; }
+      .main-menu > li { width: 100%; }
+      .main-menu a,
+      .main-menu button {
+        width: 100%;
+        min-height: 48px;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+      .has-submenu ul {
+        position: static;
+        min-width: auto;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0,0,0,.16);
+      }
+      .has-submenu.open ul { display: block; }
+      .has-submenu:hover ul { display: none; }
+      .has-submenu.open:hover ul { display: block; }
+    }
+
+    @media (max-width: 760px) {
+      .brand { font-size: 17px; }
+      .page-hero { min-height: 300px; }
+      .mission-card { width: min(100% - 24px, 960px); padding: 28px 22px; }
+      .mission-intro { text-align: left; }
+      .mission-list { font-size: 18px; gap: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-logo">UKW</span>
+        <span>The Wesley at UK</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+        <span class="menu-lines" aria-hidden="true"><span></span><span></span><span></span></span>
+        Menu
+      </button>
+
+      <ul id="main-menu" class="main-menu">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-submenu">
+          <button type="button" class="active">About Us</button>
+          <ul>
+            <li><a class="active" href="our-mission.html">Our Mission</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <button type="button">Housing</button>
+          <ul>
+            <li><a href="dorm.html">Dorm</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="apply.html">Apply</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <button type="button">Get Involved</button>
+          <ul>
+            <li><a href="ministry.html">Ministry</a></li>
+            <li><a href="weekly-programs.html">Weekly Programs</a></li>
+            <li><a href="leadership-academy.html">Leadership Academy</a></li>
+            <li><a href="prayer.html">Prayer</a></li>
+          </ul>
+        </li>
+        <li><a href="events.html">Events</a></li>
+        <li class="has-submenu">
+          <button type="button">Support Our Mission</button>
+          <ul>
+            <li><a href="support-gods-work.html">Support God's Work</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </li>
+        <li><a href="Jobs.html">Job Opportunities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>our mission</h1>
+    </section>
+
+    <section class="mission-section">
+      <article class="mission-card">
+        <p class="mission-intro">
+          The Wesley Foundation is a Christian ministry that encourages and supports students in the college journey so that they
+        </p>
+
+        <ul class="mission-list">
+          <li>deepen intimacy with Christ</li>
+          <li>become more like Christ</li>
+          <li>form authentic Christian relationships of acceptance and growth</li>
+          <li>are equipped for ministry and leadership</li>
+          <li>have safe fun</li>
+          <li>and impact their world.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="closing-strip">
+      <h2>A Christian Community Where Students Belong</h2>
+      <p>
+        The Wesley exists to help students grow in faith, build meaningful relationships, and live out the love of Jesus on campus and beyond.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong>The Wesley at The University of Kentucky</strong>
+    <span>508 Columbia Ave | Lexington, KY 40508</span>
+    <span>(859) 254-0231</span>
+    <span><a href="mailto:ukwesley@gmail.com">ukwesley@gmail.com</a></span>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainMenu = document.querySelector("#main-menu");
+    const submenuButtons = document.querySelectorAll(".has-submenu > button");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    submenuButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (window.innerWidth <= 1060) {
+          const parent = button.closest(".has-submenu");
+          parent.classList.toggle("open");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
